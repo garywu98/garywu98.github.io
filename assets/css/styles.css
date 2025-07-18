@@ -234,10 +234,8 @@ img {
     flex-direction: column;
     justify-content: space-evenly;
     height: 100vh;
-    width: 100vw;
     row-gap: .5em;
     padding-bottom: 3em;
-    position: absolute;
   }
   .home__data {
     font-size: 5vh;
@@ -247,10 +245,10 @@ img {
     margin: 0;
   }
   .introduction__header {
-    font-size: 60%;
+    font-size: 8vw;
   }
   .typewrite {
-    font-size: 45%;
+    font-size: 6vw;
   }
   .home__img {
     position: static !important;
