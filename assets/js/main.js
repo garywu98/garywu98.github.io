@@ -111,22 +111,32 @@ var TxtType = function(el, toRotate, period) {
     };
 
 /*===== ONCLICK ANIMATION =====*/
-document.querySelectorAll('.education__img').forEach((el) => {
-    el.addEventListener('click', function () {
-        // On mobile, toggle .active on tap
-        if (window.innerWidth <= 768) {
-        this.classList.toggle('active');
-        }
-    });
-});
+    document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.education__img');
 
-document.addEventListener('click', function (e) {
-    document.querySelectorAll('.education__img').forEach((el) => {
-    if (!el.contains(e.target) && window.innerWidth <= 768) {
-        el.classList.remove('active');
-    }
+    items.forEach((el) => {
+        el.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+            e.stopPropagation(); // Prevent body click from firing
+            
+            // Close all other .education__img elements
+            items.forEach(item => {
+            if (item !== this) item.classList.remove('active');
+            });
+
+            // Toggle this one
+            this.classList.toggle('active');
+        }
+        });
     });
-});
+
+    // Click outside closes all
+    document.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+        items.forEach(el => el.classList.remove('active'));
+        }
+        });
+    });
 
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
