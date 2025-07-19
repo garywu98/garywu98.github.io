@@ -110,7 +110,25 @@ var TxtType = function(el, toRotate, period) {
         document.body.appendChild(css);
     };
 
+/*===== ONCLICK ANIMATION =====*/
+document.querySelectorAll('.education__img').forEach((el) => {
+    el.addEventListener('click', function () {
+        // On mobile, toggle .active on tap
+        if (window.innerWidth <= 768) {
+        this.classList.toggle('active');
+        }
+    });
+});
+
+document.addEventListener('click', function (e) {
+    document.querySelectorAll('.education__img').forEach((el) => {
+    if (!el.contains(e.target) && window.innerWidth <= 768) {
+        el.classList.remove('active');
+    }
+    });
+});
+
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+sr.reveal('.skills__data, .education__img, .work__img, .contact__input',{interval: 200}); 
