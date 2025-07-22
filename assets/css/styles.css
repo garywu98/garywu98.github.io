@@ -129,6 +129,8 @@ img {
   justify-content: space-between;
   align-items: center;
   font-weight: var(--font-semi);
+  margin-left: 3em;
+  margin-right: 3em;
 }
 @media screen and (max-width: 767px) {
   .nav__menu {
@@ -247,6 +249,13 @@ img {
     min-height: 100vh;
     row-gap: .5em;
     padding-bottom: 3em;
+  }
+  .Left {
+    align-content: center;
+    order: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
   }
   .home__data {
     font-size: 5vh;
@@ -668,7 +677,6 @@ img {
     bottom: 25%;
   }
   .about__container {
-    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     text-align: initial;
   }
