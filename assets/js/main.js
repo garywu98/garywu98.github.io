@@ -145,6 +145,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+  document.addEventListener('DOMContentLoaded', () => {
+    const containers = document.querySelectorAll('.timeline__container');
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        // Sort by vertical position (top-down order)
+        const sortedEntries = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => a.target.offsetTop - b.target.offsetTop);
+
+        sortedEntries.forEach((entry, i) => {
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target); // animate only once
+          }, i * 200); // 200ms stagger per item
+        });
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    containers.forEach(el => {
+      observer.observe(el);
+    });
+  });
 
 // var canvas = document.getElementById("canvas"),
 //     ctx = canvas.getContext('2d');
